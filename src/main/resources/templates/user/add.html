@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+
+<form method="post" th:if="${user}" th:object="${user}">
+    <div class="form-group">
+        <label th:for="username">Username
+            <input type="text" name="username" th:field="*{username}"/>
+        </label>
+        <span th:errors="*{username}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="email">Email
+            <input type="email" name="email" th:field="*{email}"/>
+        </label>
+        <span th:errors="*{email}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="password">Password
+            <input type="password" name="password" />
+        </label>
+        <span th:errors="*{password}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label >Verify Password
+            <input type="password" name="verify" />
+        </label>
+        <span th:text="${error}"></span>
+    </div>
+
+    <input type="submit" value="Submit User Details"/>
+</form>
+
+
+<form method="post" th:unless="${user}">
+    <div class="form-group">
+    <label>Username
+        <input type="text" name="username"/>
+    </label>
+    </div>
+    <div class="form-group">
+    <label>Email
+        <input type="email" name="email" />
+    </label>
+    </div>
+    <div class="form-group">
+    <label>Password
+        <input type="password" name="password" />
+    </label>
+    </div>
+    <div class="form-group">
+    <label>Verify Password
+        <input type="password" name="verify" />
+    </label>
+    </div>
+
+    <input type="submit" value="Submit User Details"/>
+</form>
+
+</body>
+</html>
